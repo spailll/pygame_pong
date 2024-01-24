@@ -1,12 +1,20 @@
+# Author:   Ben Sailor
+# Email:    bsailor@okstate.edu
+# Date:     1/24/2024
+# Desc:     A simple pong game with a start button 
+#           and score counter. Developed using pygame.
+
 import pygame
 import random
 
-pygame.init()
-
 WIDTH, HEIGHT = 1000, 1100
 PLAY_AREA_WIDTH, PLAY_AREA_HEIGHT = 1000, 1000
-WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Pong")
+PADDLE_WIDTH, PADDLE_HEIGHT = 10, 60
+BALL_WIDTH, BALL_HEIGHT = 10, 10
+BUTTON_WIDTH, BUTTON_HEIGHT = 100, 50
+
+VEL = 10
+VEL_INCREASE = 1
 
 FPS = 60
 
@@ -14,13 +22,9 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GRAY = (128, 128, 128)
 
-VEL = 10
-
-PADDLE_WIDTH, PADDLE_HEIGHT = 10, 60
-BALL_WIDTH, BALL_HEIGHT = 10, 10
-BUTTON_WIDTH, BUTTON_HEIGHT = 100, 50
-
-
+pygame.init()
+WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Pong")
 
 def draw_window(objects):
     WIN.fill(WHITE)
@@ -114,8 +118,8 @@ def main():
             direction_1 *= -1
         elif ret == 2:
             direction_2 *= -1
-            vel1 += 1
-            vel2 += 1
+            vel1 += VEL_INCREASE
+            vel2 += VEL_INCREASE
         elif ret == 3:
             direction_1 *= -1
             direction_2 *= -1
